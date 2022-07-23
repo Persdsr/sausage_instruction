@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="post_name">{{ post.title }}</h1>
+    {% for i in post.step_post.all %}
+        <div class="single-step">
+            <h2><b>STEP {{ forloop.counter }}. {{ i.title }}</b></h2>
+            <div class="step-content">
+                <p>{{ i.text|safe }}</p>
+                {% if i.image %}
+                    <img src="{{ i.image.url }}" width="555" height="333">
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}

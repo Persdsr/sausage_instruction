@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load mptt_tags %}
+
+{% block content %}
+
+    {% recursetree post %}
+        <div class="post">
+            <a href="{{ node.get_absolute_url }}"><h1>{{ node.title }}</h1></a>
+        </div>
+        {% if not node.is_leaf_node %}
+        <div class="post-children">
+            <a href="{{ node.get_absolute_url }}"><h1>{{ children }}</h1></a>
+        </div>
+        {% endif %}
+    {% endrecursetree %}
+
+{% endblock %}
